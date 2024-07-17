@@ -7,13 +7,18 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: '*'
+        origin: '*',
+        methods: ['GET', 'POST']
     }
 });
 
 app.use(cors({
     origin: '*',
+    methods: ['GET', 'POST']
 }));
+app.get("/",(req,res)=>{
+ res.send("Hello from Backend")
+})
 
 const rooms = {};
 
