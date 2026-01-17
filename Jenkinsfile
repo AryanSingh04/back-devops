@@ -6,6 +6,13 @@ pipeline {
     }
 
     stages {
+        stage('Checkout Code') {
+            steps {
+                deleteDir()
+                checkout scm
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t back-devops-app .'
